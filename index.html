@@ -1,488 +1,583 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chaitra B V - Full Stack Developer | Python • Node.js • React • AWS • Microservices</title>
-    
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Senior Full Stack Developer specializing in Python, Node.js, React, FastAPI, AWS, Microservices, and AI/LLM Integration. Building scalable production systems. 4 years experience. Relocating to Frankfurt, Germany.">
-    <meta name="keywords" content="Backend Developer, Python Developer, FastAPI, Django, NestJS, AWS, GCP, Microservices, Distributed Systems, Cloud Architecture, REST API, gRPC, WebSocket, Docker, Kubernetes, CI/CD, Jenkins, MySQL, PostgreSQL, Query Optimization, System Design, AI Integration, LLM, GPT-4, Claude, Vertex AI, FinTech Developer, Cryptocurrency, Blockchain, Trading Platform, Senior Backend Engineer, Full Stack Developer, Germany Tech, Frankfurt Developer, EU Work Authorization, Remote Work, Hybrid">
-    <meta name="author" content="Chaitra B V">
-    <meta name="robots" content="index, follow">
-    <meta name="language" content="English">
-    
-    <!-- Open Graph Meta Tags (Social Sharing) -->
-    <meta property="og:title" content="Chaitra B V - Full Stack Developer | Python • Node.js • React • AWS • AI/LLM">
-    <meta property="og:description" content="Senior Full Stack Developer with 4 years building scalable systems using Python, Node.js, React, FastAPI, AWS, Microservices, and AI/LLM. Open to FinTech and Frankfurt roles.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://chaitrabv-dev.github.io">
-    <meta property="og:site_name" content="Chaitra B V Portfolio">
-    
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Full Stack Developer - Python • Node.js • React • AWS">
-    <meta name="twitter:description" content="Senior Full Stack Engineer | Node.js • React • FastAPI • NestJS • Kubernetes • AI/LLM Integration">
-    <meta name="twitter:creator" content="@chaitrabv">
-    
-    <!-- Additional SEO -->
-    <link rel="canonical" href="https://chaitrabv-dev.github.io">
-    <link rel="alternate" hreflang="en" href="https://chaitrabv-dev.github.io">
-    
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75' fill='%23534AB7'>{'</text></svg>">
-    
-    <!-- Structured Data (JSON-LD) - Hidden but indexed by Google -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org/",
-      "@type": "Person",
-      "name": "Chaitra B V",
-      "url": "https://chaitrabv-dev.github.io",
-      "image": "https://chaitrabv-dev.github.io",
-      "sameAs": [
-        "https://linkedin.com/in/chaitra1403bv",
-        "https://github.com/chaitrabv-dev"
-      ],
-      "jobTitle": "Senior Backend Developer",
-      "worksFor": {
-        "@type": "Organization",
-        "name": "Roost.ai"
-      },
-      "email": "chaitrabv.dev@gmail.com",
-      "birthPlace": "India",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Bengaluru",
-        "addressCountry": "IN"
-      },
-      "skills": [
-        "Python",
-        "Backend Development",
-        "FastAPI",
-        "Django",
-        "NestJS",
-        "Node.js",
-        "AWS",
-        "Google Cloud Platform",
-        "Microservices",
-        "Distributed Systems",
-        "REST API",
-        "gRPC",
-        "WebSocket",
-        "Docker",
-        "Kubernetes",
-        "MySQL",
-        "PostgreSQL",
-        "Query Optimization",
-        "System Design",
-        "CI/CD",
-        "Jenkins",
-        "AI Integration",
-        "LLM",
-        "GPT-4",
-        "Claude",
-        "Vertex AI"
-      ],
-      "knowsAbout": [
-        "Backend Architecture",
-        "Cloud Infrastructure",
-        "Database Design",
-        "Microservices Architecture",
-        "Distributed Systems",
-        "API Development",
-        "FinTech Technology",
-        "Cryptocurrency",
-        "Blockchain",
-        "High-Scale Systems",
-        "Performance Optimization",
-        "Code Quality"
-      ]
-    }
-    </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>2048 ✨</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:'Segoe UI',Arial,sans-serif;background:#0a0a1a;min-height:100vh;
+  display:flex;flex-direction:column;align-items:center;
+  padding:16px 10px 40px;overflow-x:hidden;touch-action:none;
+}
+body::before{
+  content:'';position:fixed;inset:0;
+  background:radial-gradient(ellipse at 20% 20%,rgba(120,40,200,.35) 0%,transparent 50%),
+    radial-gradient(ellipse at 80% 80%,rgba(0,180,255,.25) 0%,transparent 50%),
+    radial-gradient(ellipse at 60% 10%,rgba(255,60,120,.2) 0%,transparent 40%),
+    linear-gradient(135deg,#0a0a1a,#0d0d2b);
+  z-index:-2;
+}
+#stars{position:fixed;inset:0;z-index:-1;pointer-events:none;}
+.star{position:absolute;border-radius:50%;background:#fff;animation:twinkle var(--d) ease-in-out infinite alternate;}
+@keyframes twinkle{0%{opacity:.1;transform:scale(.8)}100%{opacity:.9;transform:scale(1.2)}}
+
+header{width:100%;max-width:500px;display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
+.logo{
+  font-size:52px;font-weight:900;
+  background:linear-gradient(135deg,#ff6fd8,#3813c2,#00d2ff);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 0 20px rgba(120,100,255,.8));
+  letter-spacing:-2px;animation:logopulse 3s ease-in-out infinite;
+}
+@keyframes logopulse{0%,100%{filter:drop-shadow(0 0 20px rgba(120,100,255,.8))}50%{filter:drop-shadow(0 0 40px rgba(255,100,200,1))}}
+.scores{display:flex;gap:8px;}
+.score-box{
+  background:rgba(255,255,255,.07);backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.15);border-radius:12px;
+  padding:6px 14px;text-align:center;min-width:72px;
+  box-shadow:0 4px 20px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.1);
+}
+.score-box .label{font-size:9px;color:rgba(255,255,255,.5);font-weight:700;text-transform:uppercase;letter-spacing:1.5px;}
+.score-box .value{font-size:20px;font-weight:900;color:#fff;line-height:1.3;text-shadow:0 0 10px rgba(100,200,255,.8);}
+.score-box.moves-box .value{color:#a78bfa;text-shadow:0 0 10px rgba(167,139,250,.8);}
+
+.controls{width:100%;max-width:500px;display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;gap:8px;}
+.subtitle{color:rgba(255,255,255,.45);font-size:12px;flex:1;}
+.btn{
+  background:linear-gradient(135deg,#7c3aed,#2563eb);color:#fff;
+  border:none;border-radius:10px;padding:9px 18px;font-size:13px;font-weight:700;cursor:pointer;
+  box-shadow:0 4px 20px rgba(124,58,237,.5);transition:all .2s;letter-spacing:.5px;white-space:nowrap;
+}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(124,58,237,.8);}
+.mute-btn{
+  background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.15);
+  border-radius:10px;padding:9px 13px;font-size:16px;cursor:pointer;
+  transition:all .2s;backdrop-filter:blur(10px);
+}
+.mute-btn:hover{background:rgba(255,255,255,.15);}
+.mute-btn.muted{opacity:.5;filter:grayscale(1);}
+
+#streakBadge{width:100%;max-width:500px;display:flex;justify-content:center;margin-bottom:10px;min-height:36px;}
+.streak-pill{
+  background:linear-gradient(135deg,#ff4500,#ff9500);
+  border-radius:30px;padding:6px 20px;font-size:14px;font-weight:900;color:#fff;
+  box-shadow:0 0 20px rgba(255,100,0,.7),0 0 40px rgba(255,100,0,.3);
+  letter-spacing:.5px;animation:streakPop .3s cubic-bezier(.34,1.56,.64,1);
+  border:1px solid rgba(255,255,255,.25);
+}
+@keyframes streakPop{0%{transform:scale(.5);opacity:0}100%{transform:scale(1);opacity:1}}
+.streak-pill.blazing{background:linear-gradient(135deg,#a855f7,#ec4899,#f97316);box-shadow:0 0 30px rgba(168,85,247,.8),0 0 60px rgba(236,72,153,.4);}
+.streak-pill.unstoppable{background:linear-gradient(135deg,#ffd700,#ff6b00);box-shadow:0 0 40px rgba(255,200,0,.9);animation:streakPop .3s cubic-bezier(.34,1.56,.64,1),unstoppablePulse 1s ease infinite alternate;}
+@keyframes unstoppablePulse{0%{box-shadow:0 0 40px rgba(255,200,0,.9)}100%{box-shadow:0 0 80px rgba(255,200,0,1),0 0 120px rgba(255,100,0,.6)}}
+
+.board-wrap{position:relative;width:100%;max-width:500px;}
+#board{
+  background:rgba(255,255,255,.04);backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,.1);border-radius:18px;
+  padding:12px;display:grid;grid-template-columns:repeat(4,1fr);
+  gap:10px;width:100%;aspect-ratio:1;
+  box-shadow:0 0 60px rgba(120,60,255,.2),0 20px 60px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.1);
+}
+.cell{background:rgba(255,255,255,.04);border-radius:10px;border:1px solid rgba(255,255,255,.06);}
+.tile-wrap{position:absolute;top:12px;left:12px;right:12px;bottom:12px;pointer-events:none;}
+.tile{
+  position:absolute;border-radius:10px;display:flex;align-items:center;justify-content:center;
+  font-weight:900;transition:left .1s ease,top .1s ease;
+  animation:tileAppear .18s cubic-bezier(.34,1.56,.64,1);
+}
+@keyframes tileAppear{0%{transform:scale(0) rotate(-10deg);opacity:0}100%{transform:scale(1) rotate(0);opacity:1}}
+.tile.merged{animation:tileMerge .2s cubic-bezier(.34,1.56,.64,1);}
+@keyframes tileMerge{0%{transform:scale(1)}40%{transform:scale(1.25) rotate(3deg)}100%{transform:scale(1) rotate(0)}}
+
+#particles{position:fixed;inset:0;pointer-events:none;z-index:100;}
+
+.go-overlay{
+  display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);
+  backdrop-filter:blur(10px);z-index:200;
+  align-items:center;justify-content:center;padding:20px;overflow-y:auto;
+}
+.go-overlay.show{display:flex;}
+.go-card{
+  background:rgba(12,8,35,.95);border:1px solid rgba(255,255,255,.15);border-radius:24px;
+  padding:32px 28px;text-align:center;
+  box-shadow:0 0 80px rgba(120,60,255,.4),0 30px 80px rgba(0,0,0,.6);
+  animation:cardDrop .4s cubic-bezier(.34,1.56,.64,1);max-width:380px;width:100%;
+}
+@keyframes cardDrop{0%{transform:scale(.6) translateY(-60px);opacity:0}100%{transform:scale(1) translateY(0);opacity:1}}
+.go-icon{font-size:52px;margin-bottom:8px;animation:iconBounce 1.2s ease infinite alternate;}
+@keyframes iconBounce{0%{transform:translateY(0)}100%{transform:translateY(-8px)}}
+.go-title{font-size:36px;font-weight:900;background:linear-gradient(135deg,#ff6fd8,#ff4444);-webkit-background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 15px rgba(255,100,100,.6));margin-bottom:4px;}
+.go-win .go-title{background:linear-gradient(135deg,#ffd700,#ff9500);-webkit-background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 15px rgba(255,200,0,.8));}
+.go-msg{color:rgba(255,255,255,.5);font-size:13px;margin-bottom:16px;}
+.brain-rating{background:rgba(255,255,255,.06);border-radius:16px;padding:16px;margin-bottom:16px;border:1px solid rgba(255,255,255,.1);}
+.brain-label{font-size:10px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:2px;margin-bottom:6px;}
+.brain-tier{font-size:26px;font-weight:900;margin-bottom:4px;}
+.brain-bar-wrap{background:rgba(255,255,255,.08);border-radius:10px;height:8px;overflow:hidden;margin:8px 0 4px;}
+.brain-bar{height:100%;border-radius:10px;transition:width 1.2s ease;background:linear-gradient(90deg,#7c3aed,#00d2ff);}
+.brain-pct{font-size:11px;color:rgba(255,255,255,.4);}
+.stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:16px;}
+.stat-cell{background:rgba(255,255,255,.05);border-radius:14px;padding:12px 10px;border:1px solid rgba(255,255,255,.08);}
+.stat-icon{font-size:20px;margin-bottom:4px;}
+.stat-val{font-size:20px;font-weight:900;color:#fff;line-height:1.1;}
+.stat-lbl{font-size:10px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:1px;margin-top:2px;}
+.streak-stat{border:1px solid rgba(255,150,0,.3);background:rgba(255,100,0,.08);}
+.streak-stat .stat-val{color:#ff9500;text-shadow:0 0 10px rgba(255,150,0,.6);}
+.tile-stat .stat-val{color:#a78bfa;text-shadow:0 0 10px rgba(167,139,250,.6);}
+.go-btns{display:flex;gap:10px;justify-content:center;}
+.go-btn{padding:11px 24px;border-radius:12px;font-weight:700;font-size:14px;border:none;cursor:pointer;transition:all .2s;}
+.go-btn.primary{background:linear-gradient(135deg,#7c3aed,#2563eb);color:#fff;box-shadow:0 4px 20px rgba(124,58,237,.5);}
+.go-btn.primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(124,58,237,.9);}
+.go-btn.secondary{background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.12);}
+.go-btn.secondary:hover{background:rgba(255,255,255,.13);}
+
+.arrow-btns{display:none;width:100%;max-width:500px;margin-top:14px;flex-direction:column;align-items:center;gap:8px;}
+.arrow-row{display:flex;gap:8px;}
+.arrow-btn{
+  width:62px;height:52px;background:rgba(255,255,255,.08);backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.15);color:#fff;border-radius:12px;
+  font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:all .15s;-webkit-tap-highlight-color:transparent;
+}
+.arrow-btn:active{background:rgba(124,58,237,.4);transform:scale(.95);}
+@media(max-width:420px){.logo{font-size:38px;}.arrow-btns{display:flex;}.go-card{padding:24px 18px;}}
+@keyframes scorePop{0%{transform:translateY(0);opacity:1}100%{transform:translateY(-50px);opacity:0}}
+.score-popup{position:fixed;font-size:16px;font-weight:900;color:#ffd700;pointer-events:none;z-index:150;text-shadow:0 0 10px rgba(255,200,0,.8);animation:scorePop .9s ease forwards;}
+</style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container nav-container">
-            <div class="logo">
-                <a href="#home">CBV</a>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="Chaitra_BV_Resume.docx" download class="nav-resume-btn">Resume</a></li>
-            </ul>
-        </div>
-    </nav>
+<canvas id="particles"></canvas>
+<div id="stars"></div>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container hero-content">
-            <div class="hero-text">
-                <h1>Chaitra B V</h1>
-                <p class="subtitle">Full Stack Developer — Python • Node.js • React • AWS</p>
-                <p class="tagline">Building scalable systems, distributed architectures, and AI-powered platforms</p>
-                <div class="cta-buttons">
-                    <a href="#projects" class="btn btn-primary">View Projects</a>
-                    <a href="https://github.com/chaitrabv-dev" class="btn btn-secondary" target="_blank">GitHub Profile</a>
-                    <a href="Chaitra_BV_Resume.docx" download class="btn btn-outline">⬇ Download Resume</a>
-                </div>
-            </div>
-        </div>
-    </section>
+<header>
+  <div class="logo">2048</div>
+  <div class="scores">
+    <div class="score-box"><div class="label">Score</div><div class="value" id="score">0</div></div>
+    <div class="score-box"><div class="label">Best</div><div class="value" id="best">0</div></div>
+    <div class="score-box moves-box"><div class="label">Moves</div><div class="value" id="movesDisplay">0</div></div>
+  </div>
+</header>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2>About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>Senior Member of Technical Staff with 3.5+ years of hands-on experience designing and building scalable, production-grade backend systems. Passionate about clean architecture, microservices, cloud infrastructure, and leveraging AI/LLM capabilities in production applications.</p>
-                    <p>Specialized in building robust REST and gRPC APIs, distributed systems, real-time data processing pipelines, and CI/CD automation. Strong expertise in database optimization, containerization, and cloud deployment on AWS and GCP.</p>
-                    <p>Currently based in Bengaluru, India. Relocating to Frankfurt, Germany. Actively learning German (A1 level) and open to exciting opportunities in FinTech, crypto, and innovative tech companies.</p>
-                    <div class="about-links">
-                        <a href="mailto:chaitrabv.dev@gmail.com" class="link-item">
-                            <span class="icon">📧</span> chaitrabv.dev@gmail.com
-                        </a>
-                        <a href="https://linkedin.com/in/chaitra1403bv" class="link-item" target="_blank">
-                            <span class="icon">💼</span> LinkedIn Profile
-                        </a>
-                        <a href="https://github.com/chaitrabv-dev" class="link-item" target="_blank">
-                            <span class="icon">🔗</span> GitHub Profile
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<div class="controls">
+  <span class="subtitle">Merge tiles → reach <strong style="color:#a78bfa">2048!</strong></span>
+  <button class="mute-btn" id="muteBtn" onclick="toggleMute()" title="Toggle sound">🔊</button>
+  <button class="btn" onclick="newGame()">✨ New</button>
+</div>
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <h2>Technical Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Backend & APIs</h3>
-                    <div class="skill-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">Node.js</span>
-                        <span class="tag">FastAPI</span>
-                        <span class="tag">Django</span>
-                        <span class="tag">NestJS</span>
-                        <span class="tag">React</span>
-                        <span class="tag">REST APIs</span>
-                        <span class="tag">gRPC</span>
-                        <span class="tag">WebSocket</span>
-                    </div>
-                </div>
+<div id="streakBadge"></div>
 
-                <div class="skill-category">
-                    <h3>Cloud & DevOps</h3>
-                    <div class="skill-tags">
-                        <span class="tag">AWS</span>
-                        <span class="tag">GCP</span>
-                        <span class="tag">Docker</span>
-                        <span class="tag">Kubernetes</span>
-                        <span class="tag">Jenkins</span>
-                        <span class="tag">CI/CD</span>
-                        <span class="tag">Infrastructure as Code</span>
-                    </div>
-                </div>
+<div class="board-wrap">
+  <div id="board"></div>
+  <div class="tile-wrap" id="tileWrap"></div>
+</div>
 
-                <div class="skill-category">
-                    <h3>Databases & Data</h3>
-                    <div class="skill-tags">
-                        <span class="tag">MySQL</span>
-                        <span class="tag">PostgreSQL</span>
-                        <span class="tag">Redis</span>
-                        <span class="tag">Kafka</span>
-                        <span class="tag">Query Optimization</span>
-                        <span class="tag">Schema Design</span>
-                    </div>
-                </div>
+<div class="arrow-btns">
+  <div class="arrow-row"><div class="arrow-btn" onclick="move('up')">▲</div></div>
+  <div class="arrow-row">
+    <div class="arrow-btn" onclick="move('left')">◀</div>
+    <div class="arrow-btn" onclick="move('down')">▼</div>
+    <div class="arrow-btn" onclick="move('right')">▶</div>
+  </div>
+</div>
 
-                <div class="skill-category">
-                    <h3>AI & Integrations</h3>
-                    <div class="skill-tags">
-                        <span class="tag">LLM Integration</span>
-                        <span class="tag">GPT-4</span>
-                        <span class="tag">Claude</span>
-                        <span class="tag">Vertex AI</span>
-                        <span class="tag">Prompt Engineering</span>
-                        <span class="tag">Multi-agent Systems</span>
-                    </div>
-                </div>
+<div class="go-overlay" id="goOverlay">
+  <div class="go-card" id="goCard">
+    <div class="go-icon" id="goIcon">💀</div>
+    <div class="go-title" id="goTitle">Game Over!</div>
+    <div class="go-msg" id="goMsg">The board is full. No moves left!</div>
+    <div class="brain-rating">
+      <div class="brain-label">🧠 Brain Rating</div>
+      <div class="brain-tier" id="brainTier">—</div>
+      <div class="brain-bar-wrap"><div class="brain-bar" id="brainBar" style="width:0%"></div></div>
+      <div class="brain-pct" id="brainPct">—</div>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-cell"><div class="stat-icon">🏆</div><div class="stat-val" id="stScore">0</div><div class="stat-lbl">Final Score</div></div>
+      <div class="stat-cell"><div class="stat-icon">🎯</div><div class="stat-val" id="stMoves">0</div><div class="stat-lbl">Total Moves</div></div>
+      <div class="stat-cell tile-stat"><div class="stat-icon">⭐</div><div class="stat-val" id="stTile">0</div><div class="stat-lbl">Highest Tile</div></div>
+      <div class="stat-cell"><div class="stat-icon">⚡</div><div class="stat-val" id="stEff">0</div><div class="stat-lbl">Pts / Move</div></div>
+      <div class="stat-cell streak-stat"><div class="stat-icon">🔥</div><div class="stat-val" id="stStreak">0</div><div class="stat-lbl">Best Streak</div></div>
+      <div class="stat-cell"><div class="stat-icon">⏱️</div><div class="stat-val" id="stTime">0:00</div><div class="stat-lbl">Time Played</div></div>
+    </div>
+    <div class="go-btns">
+      <button class="go-btn primary" onclick="newGame()">🔄 Play Again</button>
+      <button class="go-btn secondary" onclick="closeOverlay()">👀 View Board</button>
+    </div>
+  </div>
+</div>
 
-                <div class="skill-category">
-                    <h3>Languages & Tools</h3>
-                    <div class="skill-tags">
-                        <span class="tag">Java</span>
-                        <span class="tag">JavaScript</span>
-                        <span class="tag">TypeScript</span>
-                        <span class="tag">Go</span>
-                        <span class="tag">Git</span>
-                        <span class="tag">Postman</span>
-                    </div>
-                </div>
+<script>
+// ── Stars ──────────────────────────────────────────────────────────
+const starsEl=document.getElementById('stars');
+for(let i=0;i<120;i++){
+  const s=document.createElement('div');s.className='star';
+  const sz=Math.random()*2+.5;
+  s.style.cssText=`width:${sz}px;height:${sz}px;left:${Math.random()*100}%;top:${Math.random()*100}%;--d:${(Math.random()*3+1).toFixed(1)}s;`;
+  starsEl.appendChild(s);
+}
 
-                <div class="skill-category">
-                    <h3>Testing & Quality</h3>
-                    <div class="skill-tags">
-                        <span class="tag">Unit Tests</span>
-                        <span class="tag">Integration Tests</span>
-                        <span class="tag">E2E Testing</span>
-                        <span class="tag">Playwright</span>
-                        <span class="tag">Swagger</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+// ── Particles ──────────────────────────────────────────────────────
+const cvs=document.getElementById('particles'),ctx=cvs.getContext('2d');
+cvs.width=window.innerWidth;cvs.height=window.innerHeight;
+window.addEventListener('resize',()=>{cvs.width=window.innerWidth;cvs.height=window.innerHeight;});
+let parts=[];
+function spawnParticles(x,y,color,n=18){
+  for(let i=0;i<n;i++){
+    const a=Math.random()*Math.PI*2,sp=Math.random()*6+2;
+    parts.push({x,y,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,r:Math.random()*5+2,color,life:1,decay:Math.random()*.03+.02});
+  }
+}
+(function animParts(){
+  ctx.clearRect(0,0,cvs.width,cvs.height);
+  parts=parts.filter(p=>p.life>0);
+  parts.forEach(p=>{
+    ctx.save();ctx.globalAlpha=p.life;ctx.shadowBlur=10;ctx.shadowColor=p.color;
+    ctx.fillStyle=p.color;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();ctx.restore();
+    p.x+=p.vx;p.y+=p.vy;p.vy+=.15;p.life-=p.decay;p.r*=.97;
+  });
+  requestAnimationFrame(animParts);
+})();
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2>Featured Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>AI-Driven Backend Platform</h3>
-                        <div class="project-tags">
-                            <span class="project-tag">Python</span>
-                            <span class="project-tag">FastAPI</span>
-                            <span class="project-tag">LLM</span>
-                            <span class="project-tag">AWS</span>
-                        </div>
-                    </div>
-                    <p class="project-description">Built scalable microservices architecture for AI-powered testing platform serving production users. Integrated GPT-4, Claude, and Vertex AI for intelligent features. Achieved 99.9% uptime with robust monitoring and error handling.</p>
-                    <div class="project-highlights">
-                        <span>Multi-agent reasoning loops</span>
-                        <span>Real-time data processing</span>
-                        <span>LLM prompt engineering</span>
-                        <span>Infrastructure automation</span>
-                    </div>
-                </div>
+function showScorePopup(val,x,y){
+  const el=document.createElement('div');el.className='score-popup';
+  el.textContent='+'+val;el.style.left=x+'px';el.style.top=y+'px';
+  document.body.appendChild(el);setTimeout(()=>el.remove(),900);
+}
 
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>Microservices Architecture</h3>
-                        <div class="project-tags">
-                            <span class="project-tag">NestJS</span>
-                            <span class="project-tag">Docker</span>
-                            <span class="project-tag">Kubernetes</span>
-                            <span class="project-tag">gRPC</span>
-                        </div>
-                    </div>
-                    <p class="project-description">Designed and deployed distributed microservices handling high-concurrency workloads. Implemented multi-stage Docker deployments and Kubernetes orchestration. Built comprehensive REST and gRPC APIs with authentication and validation.</p>
-                    <div class="project-highlights">
-                        <span>High-availability architecture</span>
-                        <span>Container orchestration</span>
-                        <span>API gateway patterns</span>
-                        <span>Service discovery</span>
-                    </div>
-                </div>
+// ══════════════════════════════════════════════════════
+//  🔊 SOUND ENGINE  (Web Audio API — no files needed)
+// ══════════════════════════════════════════════════════
+let AC=null, muted=false;
 
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>Database Optimization Pipeline</h3>
-                        <div class="project-tags">
-                            <span class="project-tag">MySQL</span>
-                            <span class="project-tag">PostgreSQL</span>
-                            <span class="project-tag">Optimization</span>
-                            <span class="project-tag">Monitoring</span>
-                        </div>
-                    </div>
-                    <p class="project-description">Optimized complex database schemas and queries for high-throughput systems. Implemented advanced indexing strategies, query optimization, and performance monitoring. Reduced average response time by 40%+ and improved system throughput significantly.</p>
-                    <div class="project-highlights">
-                        <span>Query optimization</span>
-                        <span>Index strategies</span>
-                        <span>Backup/recovery</span>
-                        <span>Performance tuning</span>
-                    </div>
-                </div>
+function getAC(){
+  if(!AC) AC=new(window.AudioContext||window.webkitAudioContext)();
+  if(AC.state==='suspended') AC.resume();
+  return AC;
+}
 
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>CI/CD Automation Framework</h3>
-                        <div class="project-tags">
-                            <span class="project-tag">Jenkins</span>
-                            <span class="project-tag">Docker</span>
-                            <span class="project-tag">Automation</span>
-                            <span class="project-tag">Deployment</span>
-                        </div>
-                    </div>
-                    <p class="project-description">Built comprehensive Jenkins CI/CD pipelines with declarative and scripted automation. Implemented automated build, test, and deployment stages with rollback strategies and vulnerability scanning. Reduced deployment time by 60%.</p>
-                    <div class="project-highlights">
-                        <span>Pipeline automation</span>
-                        <span>Vulnerability scanning</span>
-                        <span>Rollback strategies</span>
-                        <span>Scheduled deployments</span>
-                    </div>
-                </div>
+function toggleMute(){
+  muted=!muted;
+  const btn=document.getElementById('muteBtn');
+  btn.textContent=muted?'🔇':'🔊';
+  btn.classList.toggle('muted',muted);
+}
 
-                <div class="project-card project-card--roost">
-                    <div class="project-header">
-                        <h3>Roost.ai — AI Testing Platform</h3>
-                        <div class="project-tags">
-                            <span class="project-tag">LLM</span>
-                            <span class="project-tag">VS Code</span>
-                            <span class="project-tag">AWS</span>
-                            <span class="project-tag">Enterprise</span>
-                        </div>
-                    </div>
-                    <p class="project-description">The production platform I work on — an AI-driven software testing and automation tool. Features intelligent test generation across 6 languages, multi-agent LLM pipelines, and a VS Code extension with 750+ installs and 14+ releases.</p>
-                    <div class="project-highlights">
-                        <span>750+ VS Code installs</span>
-                        <span>6 programming languages</span>
-                        <span>5 AI providers</span>
-                        <span>Self-correction loops</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://app.roost.ai/" target="_blank" class="project-link">🌐 Visit App</a>
-                    </div>
-                </div>
+// Master volume helper
+function masterGain(ac,vol=0.18){
+  const g=ac.createGain();g.gain.value=vol;g.connect(ac.destination);return g;
+}
 
-                <div class="project-card project-card--fun">
-                    <div class="project-header">
-                        <h3>2048 Game</h3>
-                        <div class="project-tags">
-                            <span class="project-tag">JavaScript</span>
-                            <span class="project-tag">HTML5</span>
-                            <span class="project-tag">CSS3</span>
-                        </div>
-                    </div>
-                    <p class="project-description">A fun browser implementation of the classic 2048 sliding tile puzzle game — built for the joy of it. Playable on desktop and mobile with smooth animations and keyboard/swipe controls.</p>
-                    <div class="project-highlights">
-                        <span>Keyboard controls</span>
-                        <span>Mobile swipe support</span>
-                        <span>Smooth animations</span>
-                        <span>Pure vanilla JS</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/chaitrabv-dev/2048-game" target="_blank" class="project-link">⭐ GitHub</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+// ── Slide sound: soft low whoosh ──────────────────────
+function sndSlide(){
+  if(muted)return;
+  const ac=getAC(),t=ac.currentTime;
+  const buf=ac.createBuffer(1,ac.sampleRate*.06,ac.sampleRate);
+  const d=buf.getChannelData(0);
+  for(let i=0;i<d.length;i++) d[i]=(Math.random()*2-1)*Math.pow(1-i/d.length,2)*.4;
+  const src=ac.createBufferSource();src.buffer=buf;
+  const filt=ac.createBiquadFilter();filt.type='bandpass';
+  filt.frequency.setValueAtTime(320,t);filt.frequency.exponentialRampToValueAtTime(160,t+.06);
+  filt.Q.value=1.5;
+  const g=masterGain(ac,.12);
+  src.connect(filt);filt.connect(g);src.start(t);
+}
 
-    <!-- Experience Section -->
-    <section class="experience">
-        <div class="container">
-            <h2>Professional Experience</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <h3>Senior Member of Technical Staff</h3>
-                        <p class="company">Roost.ai</p>
-                        <p class="duration">Jan 2025 – Present</p>
-                        <p class="description">Sole owner of the RoostGPT VS Code extension — architected, built, published, and maintained through 14+ releases with 750+ installs. Integrated 5 AI providers (OpenAI, Claude, Azure OpenAI, Vertex AI, LLaMA) supporting test generation across 6 languages. Designed multi-agent pipelines with self-correction loops, automated Amazon Knowledge Base provisioning, and delivered AI-driven test generation directly from requirements.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <h3>Member of Technical Staff</h3>
-                        <p class="company">Roost.ai</p>
-                        <p class="duration">Mar 2023 – Dec 2024</p>
-                        <p class="description">Built and scaled backend services using NestJS/Node.js — REST and gRPC APIs, auth systems, and third-party integrations under production load. Engineered AST-based parsing frameworks in Java for 5 languages. Optimized MySQL and PostgreSQL databases improving key workload performance by 40%. Led Jenkins CI/CD pipelines, Docker containerization standards, and cloud-native deployments on AWS and GCP.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <h3>Trainee Software Engineer</h3>
-                        <p class="company">Roost.ai</p>
-                        <p class="duration">Sep 2022 – Feb 2023</p>
-                        <p class="description">Delivered responsive frontend components using JavaScript, HTML5, and CSS3. Resolved customer-reported UI issues, drove feature enhancements, and collaborated with backend engineers to integrate APIs into frontend views — building a strong full-stack foundation.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+// ── Merge chime: musical note scaled to tile value ────
+const NOTES={2:261,4:293,8:329,16:392,32:440,64:523,128:587,256:659,512:783,1024:880,2048:1046};
+function sndMerge(val){
+  if(muted)return;
+  const ac=getAC(),t=ac.currentTime;
+  const freq=NOTES[val]||440;
+  const g=masterGain(ac,.22);
 
-    <!-- Education Section -->
-    <section class="education">
-        <div class="container">
-            <h2>Education</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <h3>Master of Computer Applications (MCA)</h3>
-                        <p class="company">R.V. College of Engineering, Bengaluru</p>
-                        <p class="duration">2019 – 2022</p>
-                        <p class="description">CGPA: 8.61 / 10</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  // Fundamental
+  const o1=ac.createOscillator();o1.type='sine';
+  o1.frequency.setValueAtTime(freq,t);
+  const g1=ac.createGain();g1.gain.setValueAtTime(.8,t);g1.gain.exponentialRampToValueAtTime(.001,t+.45);
+  o1.connect(g1);g1.connect(g);o1.start(t);o1.stop(t+.45);
 
-    <!-- Call to Action -->
-    <section class="cta" id="contact">
-        <div class="container">
-            <h2>Let's Work Together</h2>
-            <p>I'm open to exciting opportunities in backend engineering, distributed systems, and FinTech</p>
-            <div class="cta-buttons">
-                <a href="mailto:chaitrabv.dev@gmail.com" class="btn btn-primary">Send me an email</a>
-                <a href="https://linkedin.com/in/chaitra1403bv" class="btn btn-secondary" target="_blank">Connect on LinkedIn</a>
-            </div>
-        </div>
-    </section>
+  // Harmonic overtone (2x)
+  const o2=ac.createOscillator();o2.type='sine';
+  o2.frequency.setValueAtTime(freq*2,t);
+  const g2=ac.createGain();g2.gain.setValueAtTime(.3,t);g2.gain.exponentialRampToValueAtTime(.001,t+.25);
+  o2.connect(g2);g2.connect(g);o2.start(t);o2.stop(t+.25);
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 Chaitra B V. All rights reserved.</p>
-            <div class="footer-links">
-                <a href="https://github.com/chaitrabv-dev" target="_blank">GitHub</a>
-                <a href="https://linkedin.com/in/chaitra1403bv" target="_blank">LinkedIn</a>
-                <a href="mailto:chaitrabv.dev@gmail.com">Email</a>
-            </div>
-        </div>
-    </footer>
+  // Soft attack click
+  const o3=ac.createOscillator();o3.type='triangle';
+  o3.frequency.setValueAtTime(freq*3,t);
+  const g3=ac.createGain();g3.gain.setValueAtTime(.15,t);g3.gain.exponentialRampToValueAtTime(.001,t+.08);
+  o3.connect(g3);g3.connect(g);o3.start(t);o3.stop(t+.08);
+}
 
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const href = this.getAttribute('href');
-                if (href !== '#') {
-                    e.preventDefault();
-                    const target = document.querySelector(href);
-                    if (target) {
-                        target.scrollIntoView({ behavior: 'smooth' });
-                    }
-                }
-            });
-        });
+// ── Combo sparkle: rising arpeggio on high streaks ────
+function sndCombo(streak){
+  if(muted)return;
+  const ac=getAC(),t=ac.currentTime;
+  const notes=[523,659,783,1046];
+  const count=Math.min(streak,4);
+  for(let i=0;i<count;i++){
+    const o=ac.createOscillator();o.type='sine';
+    const freq=notes[i];
+    o.frequency.setValueAtTime(freq,t+i*.07);
+    const g=ac.createGain();
+    g.gain.setValueAtTime(0,t+i*.07);
+    g.gain.linearRampToValueAtTime(.18,t+i*.07+.02);
+    g.gain.exponentialRampToValueAtTime(.001,t+i*.07+.2);
+    const master=masterGain(ac,.25);
+    o.connect(g);g.connect(master);
+    o.start(t+i*.07);o.stop(t+i*.07+.22);
+  }
+}
 
-        // Add scroll animation for cards
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
+// ── Spawn pop: tiny soft tick ─────────────────────────
+function sndSpawn(){
+  if(muted)return;
+  const ac=getAC(),t=ac.currentTime;
+  const o=ac.createOscillator();o.type='sine';
+  o.frequency.setValueAtTime(900,t);o.frequency.exponentialRampToValueAtTime(400,t+.05);
+  const g=masterGain(ac,.07);
+  const g2=ac.createGain();g2.gain.setValueAtTime(.6,t);g2.gain.exponentialRampToValueAtTime(.001,t+.05);
+  o.connect(g2);g2.connect(g);o.start(t);o.stop(t+.06);
+}
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
+// ── Game Over: 3 descending sad tones ────────────────
+function sndGameOver(){
+  if(muted)return;
+  const ac=getAC();
+  [[440,.0],[349,.25],[262,.5]].forEach(([freq,delay])=>{
+    const t=ac.currentTime+delay;
+    const o=ac.createOscillator();o.type='sawtooth';
+    o.frequency.setValueAtTime(freq,t);o.frequency.exponentialRampToValueAtTime(freq*.85,t+.4);
+    const filt=ac.createBiquadFilter();filt.type='lowpass';filt.frequency.value=800;
+    const g=ac.createGain();g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.2,t+.05);g.gain.exponentialRampToValueAtTime(.001,t+.55);
+    const master=masterGain(ac,.35);
+    o.connect(filt);filt.connect(g);g.connect(master);o.start(t);o.stop(t+.6);
+  });
+}
 
-        document.querySelectorAll('.project-card, .skill-category').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
-        });
-    </script>
+// ── Win fanfare: triumphant ascending arpeggio ────────
+function sndWin(){
+  if(muted)return;
+  const ac=getAC();
+  const seq=[523,659,783,1046,1318];
+  seq.forEach((freq,i)=>{
+    const t=ac.currentTime+i*.1;
+    const o=ac.createOscillator();o.type='triangle';
+    o.frequency.setValueAtTime(freq,t);
+    const g=ac.createGain();g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.3,t+.04);g.gain.exponentialRampToValueAtTime(.001,t+.5);
+    const master=masterGain(ac,.4);
+    o.connect(g);g.connect(master);o.start(t);o.stop(t+.55);
+    // Octave below for fullness
+    const o2=ac.createOscillator();o2.type='sine';
+    o2.frequency.setValueAtTime(freq/2,t);
+    const g2=ac.createGain();g2.gain.setValueAtTime(0,t);g2.gain.linearRampToValueAtTime(.15,t+.04);g2.gain.exponentialRampToValueAtTime(.001,t+.4);
+    o2.connect(g2);g2.connect(master);o2.start(t);o2.stop(t+.45);
+  });
+}
+
+// ── New Game whoosh: upward sweep ─────────────────────
+function sndNewGame(){
+  if(muted)return;
+  const ac=getAC(),t=ac.currentTime;
+  const o=ac.createOscillator();o.type='sine';
+  o.frequency.setValueAtTime(150,t);o.frequency.exponentialRampToValueAtTime(600,t+.25);
+  const g=ac.createGain();g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.2,t+.05);g.gain.exponentialRampToValueAtTime(.001,t+.3);
+  const master=masterGain(ac,.25);
+  o.connect(g);g.connect(master);o.start(t);o.stop(t+.32);
+}
+
+// ══════════════════════════════════════════════════════
+//  GAME LOGIC
+// ══════════════════════════════════════════════════════
+const TILE={
+  2:   {bg:'linear-gradient(135deg,#667eea,#764ba2)',glow:'rgba(102,126,234,.7)',fg:'#fff',fs:'2.2em'},
+  4:   {bg:'linear-gradient(135deg,#f093fb,#f5576c)',glow:'rgba(245,87,108,.7)',fg:'#fff',fs:'2.2em'},
+  8:   {bg:'linear-gradient(135deg,#4facfe,#00f2fe)',glow:'rgba(0,242,254,.7)',fg:'#fff',fs:'2.2em'},
+  16:  {bg:'linear-gradient(135deg,#43e97b,#38f9d7)',glow:'rgba(56,249,215,.7)',fg:'#fff',fs:'2.2em'},
+  32:  {bg:'linear-gradient(135deg,#fa709a,#fee140)',glow:'rgba(250,112,154,.7)',fg:'#fff',fs:'2.2em'},
+  64:  {bg:'linear-gradient(135deg,#f7971e,#ffd200)',glow:'rgba(255,210,0,.7)',fg:'#fff',fs:'2.2em'},
+  128: {bg:'linear-gradient(135deg,#e040fb,#7b1fa2)',glow:'rgba(224,64,251,.8)',fg:'#fff',fs:'1.8em'},
+  256: {bg:'linear-gradient(135deg,#00b09b,#96c93d)',glow:'rgba(0,176,155,.8)',fg:'#fff',fs:'1.8em'},
+  512: {bg:'linear-gradient(135deg,#fc4a1a,#f7b733)',glow:'rgba(252,74,26,.9)',fg:'#fff',fs:'1.8em'},
+  1024:{bg:'linear-gradient(135deg,#1a1a2e,#e94560)',glow:'rgba(233,69,96,1)',fg:'#fff',fs:'1.4em'},
+  2048:{bg:'linear-gradient(135deg,#ffd700,#ff9500,#ff4500)',glow:'rgba(255,200,0,1)',fg:'#fff',fs:'1.4em'},
+};
+
+const RATINGS=[
+  {min:55,tier:'🧠 Galaxy Brain',  color:'#00d2ff',pct:95,bar:98},
+  {min:38,tier:'⚡ Sharp Mind',    color:'#a78bfa',pct:78,bar:80},
+  {min:22,tier:'😎 Street Smart',  color:'#34d399',pct:57,bar:60},
+  {min:12,tier:'🎯 Calculated',    color:'#fbbf24',pct:36,bar:38},
+  {min:0, tier:'🐒 Monkey Mode',   color:'#f87171',pct:10,bar:12},
+];
+function getBrainRating(eff){return RATINGS.find(r=>eff>=r.min)||RATINGS[RATINGS.length-1];}
+
+function getStreakInfo(s){
+  if(s>=9)  return{text:`⚡ UNSTOPPABLE! ${s}x`,cls:'unstoppable'};
+  if(s>=6)  return{text:`💥 BLAZING! ${s}x`,cls:'blazing'};
+  if(s>=4)  return{text:`🔥🔥 On Fire! ${s}x`,cls:''};
+  if(s>=2)  return{text:`🔥 Warming Up ${s}x`,cls:''};
+  return null;
+}
+
+let grid,score,best,won,over,moves,combo,bestCombo,highTile,startTime;
+
+function newGame(){
+  grid=Array.from({length:4},()=>Array(4).fill(0));
+  score=0;won=false;over=false;moves=0;combo=0;bestCombo=0;highTile=0;
+  startTime=Date.now();
+  best=+localStorage.getItem('2048best')||0;
+  addTile();addTile();
+  closeOverlay();updateStreak();render();
+  sndNewGame();
+}
+
+function closeOverlay(){document.getElementById('goOverlay').classList.remove('show');}
+
+function addTile(){
+  let empty=[];
+  grid.forEach((r,i)=>r.forEach((v,j)=>{if(!v)empty.push([i,j]);}));
+  if(!empty.length)return;
+  const[r,c]=empty[Math.floor(Math.random()*empty.length)];
+  grid[r][c]=Math.random()<.9?2:4;
+}
+
+function move(dir){
+  if(over)return;
+  let moved=false,mergePos=[],hasMerge=false;
+  const rot=(g,t)=>{let r=g.map(row=>[...row]);for(let i=0;i<t;i++)r=r[0].map((_,i)=>r.map(row=>row[i]).reverse());return r;};
+  const fwd={left:0,up:3,right:2,down:1};
+  let g=rot(grid,fwd[dir]);
+  for(let r=0;r<4;r++){
+    let row=g[r].filter(v=>v);
+    for(let i=0;i<row.length-1;i++){
+      if(row[i]===row[i+1]){
+        row[i]*=2;score+=row[i];
+        if(row[i]>highTile)highTile=row[i];
+        mergePos.push({r,c:i,val:row[i]});
+        hasMerge=true;
+        if(row[i]===2048&&!won){won=true;setTimeout(()=>showEnd(true),300);}
+        row.splice(i+1,1);
+      }
+    }
+    while(row.length<4)row.push(0);
+    if(row.join()!==g[r].join())moved=true;
+    g[r]=row;
+  }
+  const bwd={left:0,up:1,right:2,down:3};
+  grid=rot(g,bwd[dir]);
+
+  if(moved){
+    moves++;
+    if(hasMerge){
+      combo++;if(combo>bestCombo)bestCombo=combo;
+      // Sounds: merge chime for each merge, then combo sparkle
+      mergePos.forEach(m=>sndMerge(m.val));
+      if(combo>=2) setTimeout(()=>sndCombo(combo),80);
+    } else {
+      combo=0;
+      sndSlide();
+    }
+    addTile();
+    setTimeout(()=>sndSpawn(),110);
+    if(score>best){best=score;localStorage.setItem('2048best',best);}
+    updateStreak();render(mergePos);
+    if(!won&&!canMove()){over=true;setTimeout(()=>showEnd(false),400);}
+  }
+}
+
+function canMove(){
+  for(let r=0;r<4;r++)for(let c=0;c<4;c++){
+    if(!grid[r][c])return true;
+    if(c<3&&grid[r][c]===grid[r][c+1])return true;
+    if(r<3&&grid[r][c]===grid[r+1][c])return true;
+  }return false;
+}
+
+function updateStreak(){
+  const badge=document.getElementById('streakBadge');
+  const info=getStreakInfo(combo);
+  badge.innerHTML=info?`<div class="streak-pill ${info.cls}">${info.text}</div>`:'';
+}
+
+function fmtTime(ms){const s=Math.floor(ms/1000),m=Math.floor(s/60);return`${m}:${String(s%60).padStart(2,'0')}`;}
+
+function showEnd(win){
+  const elapsed=Date.now()-startTime;
+  const eff=moves>0?Math.round(score/moves):0;
+  const rating=getBrainRating(eff);
+  const card=document.getElementById('goCard');
+  win?sndWin():sndGameOver();
+  if(win){
+    card.classList.add('go-win');
+    document.getElementById('goIcon').textContent='🏆';
+    document.getElementById('goTitle').textContent='You Win!';
+    document.getElementById('goMsg').textContent='Legendary! You reached 2048!';
+    for(let i=0;i<10;i++)setTimeout(()=>spawnParticles(Math.random()*window.innerWidth,Math.random()*window.innerHeight,`hsl(${Math.random()*360},100%,65%)`,24),i*120);
+  } else {
+    card.classList.remove('go-win');
+    document.getElementById('goIcon').textContent='💀';
+    document.getElementById('goTitle').textContent='Game Over!';
+    document.getElementById('goMsg').textContent='The board is full. No moves left!';
+  }
+  document.getElementById('brainTier').textContent=rating.tier;
+  document.getElementById('brainTier').style.color=rating.color;
+  document.getElementById('brainBar').style.background=`linear-gradient(90deg,${rating.color},#fff)`;
+  setTimeout(()=>document.getElementById('brainBar').style.width=rating.bar+'%',100);
+  document.getElementById('brainPct').textContent=`Better than ${rating.pct}% of players · ${eff} pts/move`;
+  document.getElementById('stScore').textContent=score.toLocaleString();
+  document.getElementById('stMoves').textContent=moves;
+  document.getElementById('stTile').textContent=highTile||grid.flat().reduce((a,b)=>Math.max(a,b),0);
+  document.getElementById('stEff').textContent=eff;
+  document.getElementById('stStreak').textContent=bestCombo;
+  document.getElementById('stTime').textContent=fmtTime(elapsed);
+  document.getElementById('goOverlay').classList.add('show');
+}
+
+function render(mergePos=[]){
+  document.getElementById('score').textContent=score.toLocaleString();
+  document.getElementById('best').textContent=best.toLocaleString();
+  document.getElementById('movesDisplay').textContent=moves;
+  const board=document.getElementById('board');
+  board.innerHTML='';
+  for(let i=0;i<16;i++){const d=document.createElement('div');d.className='cell';board.appendChild(d);}
+  const wrap=document.getElementById('tileWrap');wrap.innerHTML='';
+  const cells=board.querySelectorAll('.cell');
+  grid.forEach((row,r)=>row.forEach((val,c)=>{
+    if(!val)return;
+    const ref=cells[r*4+c].getBoundingClientRect(),wref=wrap.getBoundingClientRect();
+    const tile=document.createElement('div');tile.className='tile';
+    const cfg=TILE[val]||{bg:'linear-gradient(135deg,#1a1a2e,#ff6b6b)',glow:'rgba(255,100,100,1)',fg:'#fff',fs:'1.2em'};
+    const isMerge=mergePos.some(m=>m.r===r&&m.c===c);
+    if(isMerge)tile.classList.add('merged');
+    tile.style.cssText=`width:${ref.width}px;height:${ref.height}px;left:${ref.left-wref.left}px;top:${ref.top-wref.top}px;background:${cfg.bg};color:${cfg.fg};font-size:${cfg.fs};box-shadow:0 0 20px ${cfg.glow},0 0 40px ${cfg.glow}55,inset 0 1px 0 rgba(255,255,255,.3);text-shadow:0 0 10px rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.2);`;
+    tile.textContent=val;
+    wrap.appendChild(tile);
+    if(isMerge){
+      const cx=ref.left+ref.width/2,cy=ref.top+ref.height/2;
+      spawnParticles(cx,cy,cfg.glow);
+      showScorePopup(val,cx,cy-20);
+    }
+  }));
+}
+
+// ── Input ─────────────────────────────────────────────────────────
+document.addEventListener('keydown',e=>{
+  const m={ArrowLeft:'left',ArrowRight:'right',ArrowUp:'up',ArrowDown:'down'};
+  if(m[e.key]){e.preventDefault();move(m[e.key]);}
+});
+let tx,ty;
+document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;ty=e.touches[0].clientY;},{passive:true});
+document.addEventListener('touchend',e=>{
+  if(tx===undefined)return;
+  const dx=e.changedTouches[0].clientX-tx,dy=e.changedTouches[0].clientY-ty;
+  if(Math.abs(dx)<20&&Math.abs(dy)<20)return;
+  Math.abs(dx)>Math.abs(dy)?move(dx>0?'right':'left'):move(dy>0?'down':'up');
+  tx=ty=undefined;
+});
+
+newGame();
+</script>
 </body>
 </html>
